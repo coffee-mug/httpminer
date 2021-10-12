@@ -1,0 +1,30 @@
+{
+  "name": "httpminer",
+  "description": "HTTPMiner allows you to transform HTTP requests in Javascript and extract the results in CSV",
+  "version": "0.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "<all_urls>"
+
+  ],
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "webRequest"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "all_frames": true,
+    "js": ["content-script.js"]
+  }],
+  "web_accessible_resources": [{
+    "resources": ["injected.js"],
+    "matches": ["<all_urls>"]
+  }]
+}
