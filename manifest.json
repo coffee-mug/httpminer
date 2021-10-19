@@ -1,30 +1,31 @@
 {
   "name": "httpminer",
   "description": "HTTPMiner allows you to transform HTTP requests in Javascript and extract the results in CSV",
-  "version": "0.0",
+  "version": "0.1",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
   },
   "host_permissions": [
     "<all_urls>"
-
   ],
   "permissions": [
     "scripting",
     "activeTab",
-    "webRequest"
+    "webRequest",
+    "downloads",
+    "tabs"
   ],
   "action": {
     "default_popup": "popup.html"
   },
   "content_scripts": [{
-    "matches": ["<all_urls>"],
+    "matches": ["*://*.fnac.com/*"],
     "all_frames": true,
     "js": ["content-script.js"]
   }],
   "web_accessible_resources": [{
     "resources": ["injected.js"],
-    "matches": ["<all_urls>"]
+    "matches": ["*://*.fnac.com/*"]
   }]
 }
